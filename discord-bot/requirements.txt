@@ -1,0 +1,4 @@
+aiohttp==3.11.14
+hikari==2.1.1
+hikari_lightbulb==2.3.5.post1
+python-dotenv==1.0.1
