@@ -114,7 +114,6 @@ async def check_stream_status():
                 if TWITCH_CHANNEL in live_streams and TWITCH_CHANNEL not in stream_status:
                     stream_info = live_streams[TWITCH_CHANNEL]
                     stream_status[TWITCH_CHANNEL] = stream_info
-                    save_stream_status()
                     # Check the cooldown before sending a webhook.
                     if now >= cooldown_check:
                         await send_webhook_notification(stream_info)
@@ -124,7 +123,7 @@ async def check_stream_status():
                 # If the channel went offline...
                 elif TWITCH_CHANNEL not in live_streams and TWITCH_CHANNEL in stream_status:
                     del stream_status[TWITCH_CHANNEL]
-                    save_stream_status()
+                save_stream_status()
             else:
                 print(f"Error checking Twitch streams: {response.status}")
 
